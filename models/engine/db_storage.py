@@ -14,7 +14,7 @@ from models.place import Place
 from models.review import Review
 from os import getenv
 
-clsses = [State, City, User, Place]
+clsses = [State, City, User, Place, Review]
 
 class DBStorage:
     """ The database object blueprint """

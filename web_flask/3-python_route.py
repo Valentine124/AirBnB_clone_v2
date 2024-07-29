@@ -23,5 +23,12 @@ def show_c(text):
     new = text.replace('_', ' ')
     return f'C {new}'
 
+@app.route('/python/', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
+def show_python(text='cool'):
+    """Creates a route for python"""
+    new = text.replace('_', ' ')
+    return f'Python {new}'
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

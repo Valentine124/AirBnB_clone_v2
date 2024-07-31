@@ -3,7 +3,7 @@
 """Contains a Flask application"""
 
 
-from flask import Flask
+from flask import Flask, abort, render_template
 
 app = Flask(__name__)
 
@@ -33,6 +33,26 @@ def show_python(text='cool'):
     """Creates a route for python"""
     new = text.replace('_', ' ')
     return f'Python {new}'
+
+
+@app.route('/number/<n>', strict_slashes=False)
+def number(n):
+    """Create route to number"""
+    try:
+        num = int(n)
+        return f'{num} is a number'
+    except(Exception):
+        abort(404)
+
+
+@app.route('/number_template/<n>')
+def show_template(n):
+    """Create a route that renders a template"""
+    try:
+        num = int(n)
+        return render_template('5-number.html', n=n)
+    except(Exception):
+        abort(404)
 
 
 if __name__ == '__main__':
